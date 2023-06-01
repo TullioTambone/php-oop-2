@@ -29,10 +29,10 @@ class Animal extends Products{
 }
 
 $prodotti = [
-    new Animal(1, 'croccantini', 30, 'cibo', 'https://picsum.photos/200/300', 'cane', 'icona cane'),
-    new Animal(2, 'scatoletta', 15, 'cibo', 'https://picsum.photos/200/300', 'gatto', 'icona gatto'),
-    new Animal(3, 'palla', 5, 'giochi', 'https://picsum.photos/200/300', 'cane', 'icona cane'),
-    new Animal(4, 'topolino', 30, 'giochi', 'https://picsum.photos/200/300', 'gatto', 'icona gatto'),
+    new Animal(1, 'croccantini', 30, 'cibo', 'https://picsum.photos/200/300', 'cane', '<i class="fa-solid fa-dog"></i>'),
+    new Animal(2, 'scatoletta', 15, 'cibo', 'https://picsum.photos/200/300', 'gatto', '<i class="fa-solid fa-cat"></i>'),
+    new Animal(3, 'palla', 5, 'giochi', 'https://picsum.photos/200/300', 'cane', '<i class="fa-solid fa-dog"></i>'),
+    new Animal(4, 'topolino', 30, 'giochi', 'https://picsum.photos/200/300', 'gatto', '<i class="fa-solid fa-cat"></i>'),
 ];
 ?>
 
@@ -43,6 +43,7 @@ $prodotti = [
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>oop-2</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -62,6 +63,9 @@ $prodotti = [
                             <span>animale: <?php echo $element->animal ?></span>
                             <span class="d-block">prezzo: <?php echo $element->prezzo ?>$</span>
                         </div>
+                        <div id="icon">
+                            <?php echo $element->icon?>
+                        </div>
                     </div>
                 <?php }?>
             </div>
@@ -74,5 +78,13 @@ $prodotti = [
 
 
 <style>
-
+.card{
+    padding:0;
+}
+#icon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+}
 </style>
