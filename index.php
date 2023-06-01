@@ -45,6 +45,11 @@ $prodotti = [
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-md">
+                <a class="navbar-brand" href="#"><h1>Aniaml Shop</h1></a>
+            </div>
+        </nav>
         <div class="container d-flex justify-content-center">
             <div class="row mt-5">
                 <?php foreach ($prodotti as $key => $element) {?>
