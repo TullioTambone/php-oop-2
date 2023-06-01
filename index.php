@@ -1,48 +1,73 @@
 <?php
-
 //classe padre
 class Products{
-    public $animal;
-    public $food;
-    public $toys;
+    public $id;
+    public $titolo;
+    public $prezzo;
+    public $tipologia;
+    public $img;
 
-    public function __construct(Animal $animal, Food $food, Toys $toys){
-        $this->animal = $animal;
-        $this->food = $food;
-        $this->toys = $toys;
+    public function __construct($id, $titolo, $prezzo, $tipologia, $img){
+        $this->id = $id;
+        $this->titolo = $titolo;
+        $this->prezzo = $prezzo;
+        $this->tipologia = $tipologia;
+        $this->img = $img;
     }
 }
 
 //class animal
-class Animal{   
-    public $dog;
-    public $cat;
+class Animal extends Products{   
+    public $animal;
+    public $icon;
 
-    public function __construct($dog, $cat){
-        $this->dog = $dog;
-        $this->cat = $cat;
+    public function __construct($id, $titolo, $prezzo, $tipologia, $img, $animal, $icon){
+        parent::__construct($id, $titolo, $prezzo, $tipologia, $img);
+        $this->animal = $animal;
+        $this->icon = $icon;
     }
 }
 
-//class food
-class Food{
-    public $croccantini;
-    public $scatoletta;
-
-    public function __construct($croccantini,$scatoletta){
-        $this->croccantini = $croccantini;
-        $this->scatoletta = $scatoletta;
-    }
-}
-
-//class gadget
-class Toys{
-    public $ball;
-    public $mouse;
-    
-    public function __constructor($ball, $mouse){
-        $this->ball = $ball;
-        $this->mouse = $mouse;
-    }
-}
+$prodotti = [
+    new Animal(1, 'croccantini', 30, 'cibo', 'https://picsum.photos/200/300', 'cane', 'icona cane'),
+    new Animal(2, 'scatoletta', 15, 'cibo', 'https://picsum.photos/200/300', 'gatto', 'icona gatto'),
+    new Animal(3, 'palla', 5, 'giochi', 'https://picsum.photos/200/300', 'cane', 'icona cane'),
+    new Animal(4, 'topolino', 30, 'giochi', 'https://picsum.photos/200/300', 'gatto', 'icona gatto'),
+];
 ?>
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>oop-2</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container d-flex justify-content-center">
+            <div class="row mt-5">
+                <?php foreach ($prodotti as $key => $element) {?>
+                    
+                    <div class="card col-4 " style="width: 18rem;">
+                        <img src="<?php echo $element->img?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5><?php echo $element->titolo ?></h5>
+                            <h6>tipologia: <?php echo $element->tipologia ?></h6>
+                            <span>animale: <?php echo $element->animal ?></span>
+                            <span class="d-block">prezzo: <?php echo $element->prezzo ?>$</span>
+                        </div>
+                    </div>
+                <?php }?>
+            </div>
+        </div>
+            
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+<style>
+
+</style>
