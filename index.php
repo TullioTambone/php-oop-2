@@ -34,6 +34,8 @@ $prodotti = [
     new Animal(3, 'palla', 5, 'giochi', 'https://picsum.photos/200/300', 'cane', '<i class="fa-solid fa-dog"></i>'),
     new Animal(4, 'topolino', 30, 'giochi', 'https://picsum.photos/200/300', 'gatto', '<i class="fa-solid fa-cat"></i>'),
 ];
+
+
 ?>
 
 <!doctype html>
