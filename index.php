@@ -1,41 +1,29 @@
 <?php
-//classe padre
-class Products{
-    public $id;
-    public $titolo;
-    public $prezzo;
-    public $tipologia;
-    public $img;
+require_once __DIR__ . '/models/products.php';
+require_once __DIR__ . '/models/animals.php';
+require __DIR__ . '/database/db.php';
 
-    public function __construct($id, $titolo, $prezzo, $tipologia, $img){
-        $this->id = $id;
-        $this->titolo = $titolo;
-        $this->prezzo = $prezzo;
-        $this->tipologia = $tipologia;
-        $this->img = $img;
-    }
-}
-
-//class animal
-class Animal extends Products{   
+trait AnimalInfo {
     public $animal;
     public $icon;
 
-    public function __construct($id, $titolo, $prezzo, $tipologia, $img, $animal, $icon){
-        parent::__construct($id, $titolo, $prezzo, $tipologia, $img);
+    public function setAnimalInfo($animal, $icon) {
         $this->animal = $animal;
         $this->icon = $icon;
     }
+
+    public function getAnimalName() {
+        return $this->animal;
+    }
+
+    public function getAnimalIcon() {
+        return $this->icon;
+    }
 }
 
-$prodotti = [
-    new Animal(1, 'croccantini', 30, 'cibo', 'https://picsum.photos/200/300', 'cane', '<i class="fa-solid fa-dog"></i>'),
-    new Animal(2, 'scatoletta', 15, 'cibo', 'https://picsum.photos/200/300', 'gatto', '<i class="fa-solid fa-cat"></i>'),
-    new Animal(3, 'palla', 5, 'giochi', 'https://picsum.photos/200/300', 'cane', '<i class="fa-solid fa-dog"></i>'),
-    new Animal(4, 'topolino', 30, 'giochi', 'https://picsum.photos/200/300', 'gatto', '<i class="fa-solid fa-cat"></i>'),
-];
 
 
+var_dump($prodotti);
 ?>
 
 <!doctype html>
@@ -54,19 +42,19 @@ $prodotti = [
             </div>
         </nav>
         <div class="container d-flex justify-content-center">
-            <div class="row mt-5">
+            <div class="row mt-5 justify-content-center">
                 <?php foreach ($prodotti as $key => $element) {?>
                     
-                    <div class="card col-4 " style="width: 18rem;">
+                    <div class="card col-12 col-md-6 col-lg-4 " style="width: 18rem;">
                         <img src="<?php echo $element->img?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5><?php echo $element->titolo ?></h5>
                             <h6>tipologia: <?php echo $element->tipologia ?></h6>
-                            <span>animale: <?php echo $element->animal ?></span>
+                            <span>animale: <?php echo $element->getAnimalName() ?></span>
                             <span class="d-block">prezzo: <?php echo $element->prezzo ?>$</span>
                         </div>
                         <div id="icon">
-                            <?php echo $element->icon?>
+                            <?php echo $element->getAnimalIcon()?>
                         </div>
                     </div>
                 <?php }?>
