@@ -4,10 +4,14 @@ require_once __DIR__ . '/models/animals.php';
 require __DIR__ . '/database/db.php';
 
 trait AnimalInfo {
-    public $animal;
+    public $animal; // cane o gatto
     public $icon;
 
     public function setAnimalInfo($animal, $icon) {
+                
+        if ($animal !== 'cane' && $animal !== 'gatto') {
+            throw new Exception("Invalid animal type");
+        }
         $this->animal = $animal;
         $this->icon = $icon;
     }
@@ -19,8 +23,17 @@ trait AnimalInfo {
     public function getAnimalIcon() {
         return $this->icon;
     }
+
 }
 
+$ucc = new Animal(1, 'croccantini', 30, 'cibo', 'https://picsum.photos/200/300', 'uccello', '<i class="fa-solid fa-dog"></i>');
+try {
+    $ucc->setAnimalInfo('cane', 'icon');
+    //setAnimalInfo('cane', 'icon');
+    //new Animal(1, 'croccantini', 30, 'cibo', 'https://picsum.photos/200/300', 'cane', '<i class="fa-solid fa-dog"></i>')
+} catch( Exception $e ){
+    var_dump('error:', $e->getMessage());
+}
 
 
 var_dump($prodotti);
